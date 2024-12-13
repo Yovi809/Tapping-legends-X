@@ -1,0 +1,49 @@
+local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
+
+local window = DrRayLibrary:Load("XHub | Tapping legends X", "Default")
+
+local tab = DrRayLibrary.newTab("Main", "ImageIdHere")
+
+tab.newToggle("auto rebirth", "rebirth", true, function(toggleState)
+    if toggleState then
+        _G.auto = true
+    
+    
+    while _G.auto do
+game:GetService("ReplicatedStorage").Remotes.Rebirth:FireServer(1)
+wait(0.1)
+end
+    else
+    	    _G.auto = false
+    
+    
+    while _G.auto do
+game:GetService("ReplicatedStorage").Remotes.Rebirth:FireServer(1)
+wait(0.1)
+end
+    end
+end)
+
+tab.newToggle("auto tap", "Tap", true, function(toggleState)
+    if toggleState then
+        _G.auto = true
+    
+    
+    while _G.auto do
+game:GetService("ReplicatedStorage").Remotes.Tap:FireServer()
+wait(0.1)
+end
+    else
+        _G.auto = false
+    
+    
+    while _G.auto do
+game:GetService("ReplicatedStorage").Remotes.Tap:FireServer()
+wait(0.1)
+end
+    end
+end)
+
+tab.newButton("equip best", "Click me!", function()
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("EquipBest"):InvokeServer()
+end)
